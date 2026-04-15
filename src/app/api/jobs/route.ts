@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 const BASE_URL = (process.env.JOBDIVA_BASE_URL || "https://api.jobdiva.com").replace(/\/$/, "");
 const CLIENT_ID = process.env.JOBDIVA_CLIENT_ID || "";
 const USERNAME = process.env.JOBDIVA_USERNAME || "";
