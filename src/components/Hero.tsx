@@ -11,7 +11,7 @@ const content = {
     trust: "✓ 100% Legal · ✓ TN / H-1B Visa · ✓ Free for candidates",
   },
   es: {
-    lines: ["Trabajos Tech Que", "Se Adaptan a Ti,", "No al Revés"],
+    lines: ["Trabajos que se adaptan", "a ti, y no al revés"],
     subtitle:
       "Ofertas personalizadas, visa patrocinada y un camino claro para vivir y trabajar legalmente en EE.UU.",
     cta: "Ver Empleos Disponibles",
