@@ -25,14 +25,20 @@ export default function JobsGrid() {
       .finally(() => setLoading(false));
   }, []);
 
-  const filtered = jobs.filter((j) => {
-    const q = search.toLowerCase();
-    return (
-      j.title.toLowerCase().includes(q) ||
-      j.location.toLowerCase().includes(q) ||
-      (j.type || "").toLowerCase().includes(q)
-    );
-  });
+  const filtered = jobs
+    .filter((j) => {
+      const q = search.toLowerCase();
+      return (
+        j.title.toLowerCase().includes(q) ||
+        j.location.toLowerCase().includes(q) ||
+        (j.type || "").toLowerCase().includes(q)
+      );
+    })
+    .sort((a, b) => {
+      const aHasSalary = (a.salary_min || 0) + (a.salary_max || 0) > 0 ? 1 : 0;
+      const bHasSalary = (b.salary_min || 0) + (b.salary_max || 0) > 0 ? 1 : 0;
+      return bHasSalary - aHasSalary;
+    });
 
   if (loading) {
     return (
