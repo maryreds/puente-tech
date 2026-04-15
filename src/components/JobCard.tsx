@@ -50,13 +50,27 @@ function hashCode(s: string): number {
   return Math.abs(hash);
 }
 
-function formatSalary(min?: number, max?: number): string {
+const USD_TO_MXN = 20.5;
+
+function formatSalaryUSD(min?: number, max?: number): string {
   if (!min && !max) return "Competitive";
   const fmt = (n: number) =>
     "$" + Math.round(n / 1000) + "k";
   if (min && max) return `${fmt(min)} – ${fmt(max)}/yr`;
   if (max) return `Up to ${fmt(max)}/yr`;
   return `From ${fmt(min!)}/yr`;
+}
+
+function formatSalaryMXN(min?: number, max?: number): string | null {
+  const base = max || min;
+  if (!base) return null;
+  const mxn = base * USD_TO_MXN;
+  if (mxn >= 1_000_000) {
+    const millions = (mxn / 1_000_000).toFixed(1).replace(/\.0$/, "");
+    return `~$${millions}M MXN pesos al año`;
+  }
+  const thousands = Math.round(mxn / 1000);
+  return `~$${thousands}k MXN pesos al año`;
 }
 
 export default function JobCard({ job, onClick }: { job: Job; onClick?: () => void }) {
@@ -74,7 +88,7 @@ export default function JobCard({ job, onClick }: { job: Job; onClick?: () => vo
       </div>
 
       {/* Job title */}
-      <h3 className="font-semibold text-foreground text-base leading-tight mb-1">
+      <h3 className="font-[family-name:var(--font-noto-sans)] font-semibold text-foreground text-base leading-tight mb-1">
         {job.title}
       </h3>
 
@@ -83,8 +97,13 @@ export default function JobCard({ job, onClick }: { job: Job; onClick?: () => vo
 
       {/* Salary */}
       <p className={`text-sm font-semibold ${color.text}`}>
-        {formatSalary(job.salary_min, job.salary_max)}
+        {formatSalaryUSD(job.salary_min, job.salary_max)}
       </p>
+      {formatSalaryMXN(job.salary_min, job.salary_max) && (
+        <p className="text-xs text-gray-400 mt-0.5">
+          {formatSalaryMXN(job.salary_min, job.salary_max)}
+        </p>
+      )}
 
       {/* Tags */}
       {job.type && (

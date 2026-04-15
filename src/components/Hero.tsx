@@ -13,7 +13,7 @@ const content = {
   es: {
     lines: ["Trabajos que se adaptan", "a ti, y no al revés"],
     subtitle:
-      "Ofertas personalizadas, visa patrocinada y un camino claro para vivir y trabajar legalmente en EE.UU.",
+      "Ofertas personalizadas, visa patrocinada y un camino guiado para vivir y trabajar legalmente en Estados Unidos.",
     cta: "Ver Empleos Disponibles",
     trust: "✓ 100% Legal · ✓ Visa TN / H-1B · ✓ Sin costo para ti",
   },
