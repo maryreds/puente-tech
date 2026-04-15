@@ -33,7 +33,11 @@ export interface Job {
   salary_min?: number;
   salary_max?: number;
   type?: string;
-  category?: string;
+  skills?: string;
+  start_date?: string;
+  end_date?: string;
+  openings?: number;
+  remote_pct?: number;
   posted_at?: string;
 }
 
@@ -55,13 +59,13 @@ function formatSalary(min?: number, max?: number): string {
   return `From ${fmt(min!)}/yr`;
 }
 
-export default function JobCard({ job }: { job: Job }) {
+export default function JobCard({ job, onClick }: { job: Job; onClick?: () => void }) {
   const colorIdx = hashCode(job.id) % palette.length;
   const iconIdx = hashCode(job.title) % icons.length;
   const color = palette[colorIdx];
 
   return (
-    <div className="group rounded-2xl bg-white border border-gray-100 shadow-sm p-6 flex flex-col items-center text-center transition-all duration-200 hover:shadow-md hover:-translate-y-1 cursor-pointer">
+    <div onClick={onClick} className="group rounded-2xl bg-white border border-gray-100 shadow-sm p-6 flex flex-col items-center text-center transition-all duration-200 hover:shadow-md hover:-translate-y-1 cursor-pointer">
       {/* Colorful icon circle */}
       <div
         className={`w-16 h-16 rounded-full ${color.bg} flex items-center justify-center mb-4 ${color.icon} transition-transform duration-200 group-hover:scale-110`}

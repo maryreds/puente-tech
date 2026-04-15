@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import JobsGrid from "./JobsGrid";
 
 export const metadata = {
-  title: "Jobs — TalentOS",
+  title: "Open Roles — TalentOS",
   description: "Browse tech jobs in the U.S. with visa sponsorship.",
 };
 
@@ -32,11 +32,11 @@ export default function EmpleosPage() {
       <section className="py-12 md:py-16 px-6">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="font-[family-name:var(--font-instrument-serif)] text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
-            Open Positions
+            Open Roles
           </h1>
           <p className="mt-4 text-lg text-gray-400 max-w-xl mx-auto">
-            Tech jobs in the U.S. with visa sponsorship. Your estimated
-            take-home pay is shown upfront.
+            Tech roles in the U.S. with visa sponsorship. Your estimated
+            take-home pay is shown upfront. Click any role for details.
           </p>
         </div>
       </section>

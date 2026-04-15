@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import JobCard, { type Job } from "@/components/JobCard";
+import JobDetail from "@/components/JobDetail";
 
 export default function JobsGrid() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [selected, setSelected] = useState<Job | null>(null);
 
   useEffect(() => {
     fetch("/api/jobs")
@@ -90,7 +92,7 @@ export default function JobsGrid() {
       {filtered.length > 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {filtered.map((job) => (
-            <JobCard key={job.id} job={job} />
+            <JobCard key={job.id} job={job} onClick={() => setSelected(job)} />
           ))}
         </div>
       ) : (
@@ -98,6 +100,11 @@ export default function JobsGrid() {
           No positions found{search && ` for "${search}"`}. Try a different
           search.
         </div>
+      )}
+
+      {/* Detail modal */}
+      {selected && (
+        <JobDetail job={selected} onClose={() => setSelected(null)} />
       )}
     </div>
   );

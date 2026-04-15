@@ -118,7 +118,10 @@ export async function GET() {
     const jobs = rawJobs
       .filter((j) => {
         const status = String(j.JOBSTATUS || "").toUpperCase();
-        return status === "OPEN" || status === "ACTIVE" || status === "RELEASED";
+        const country = String(j.COUNTRY || "").toUpperCase().trim();
+        const isOpen = status === "OPEN" || status === "ACTIVE" || status === "RELEASED";
+        const isNotIndia = country !== "IN" && country !== "INDIA";
+        return isOpen && isNotIndia;
       })
       .map((j) => {
         const { min, max } = parseAnnualSalary(j);
@@ -133,7 +136,11 @@ export async function GET() {
           salary_min: min,
           salary_max: max,
           type: String(j.POSITIONTYPE || "Full-time"),
-          category: String(j.SKILLS || "").substring(0, 60),
+          skills: String(j.SKILLS || "").trim(),
+          start_date: String(j.STARTDATE || ""),
+          end_date: String(j.ENDDATE || ""),
+          openings: Number(j.OPENINGS || 1),
+          remote_pct: Number(j.REMOTE_PERCENTAGE || 0),
           posted_at: String(j.ISSUEDATE || ""),
         };
       });
