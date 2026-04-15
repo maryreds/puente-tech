@@ -7,7 +7,7 @@ import { useLang } from "./LangContext";
 const navContent = {
   en: {
     links: [
-      { label: "Jobs", href: "#empleos" },
+      { label: "Jobs", href: "/empleos" },
       { label: "How It Works", href: "#como-funciona" },
       { label: "Visa & Docs", href: "#visa" },
       { label: "FAQ", href: "#preguntas" },
@@ -17,7 +17,7 @@ const navContent = {
   },
   es: {
     links: [
-      { label: "Empleos", href: "#empleos" },
+      { label: "Empleos", href: "/empleos" },
       { label: "Cómo Funciona", href: "#como-funciona" },
       { label: "Visa y Documentos", href: "#visa" },
       { label: "Preguntas", href: "#preguntas" },
@@ -36,6 +36,10 @@ export default function Navbar() {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
+    if (!href.startsWith("#")) {
+      setMobileOpen(false);
+      return;
+    }
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
