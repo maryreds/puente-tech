@@ -4,14 +4,18 @@ import { useState } from "react";
 
 const content = {
   en: {
-    lines: ["Tech Jobs", "That Match", "You, Not The", "Other Way", "Around"],
+    linesBefore: ["Tech Jobs", "That Match"],
+    folderLine: { before: "You,", after: "Not The" },
+    linesAfter: ["Other Way", "Around"],
     subtitle:
       "Job matches, visa sponsorship, and a clear path to live and work legally in the U.S.",
     cta: "See Available Jobs",
     trust: "✓ 100% Legal · ✓ TN / H-1B Visa · ✓ Free for candidates",
   },
   es: {
-    lines: ["Trabajos Tech", "Que Se Adaptan", "a Ti, No al", "Revés"],
+    linesBefore: ["Trabajos Tech", "Que Se"],
+    folderLine: { before: "Adaptan a", after: "Ti, No" },
+    linesAfter: ["al Revés"],
     subtitle:
       "Ofertas personalizadas, visa patrocinada y un camino claro para vivir y trabajar legalmente en EE.UU.",
     cta: "Ver Empleos Disponibles",
@@ -147,23 +151,28 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Big heading with 3D folder overlay */}
-        <div className="relative text-center">
+        {/* Big heading with inline 3D folder */}
+        <div className="text-center">
           <h1 className="font-[family-name:var(--font-instrument-serif)] text-[clamp(3.5rem,10vw,9rem)] font-normal leading-[0.92] tracking-[-0.02em] text-foreground">
-            {t.lines.map((line, i) => (
-              <span key={`${lang}-${i}`} className="block">
+            {t.linesBefore.map((line, i) => (
+              <span key={`${lang}-before-${i}`} className="block">
+                {line}
+              </span>
+            ))}
+            {/* Line with folder inline between words */}
+            <span className="block">
+              {t.folderLine.before}
+              <span className="inline-block align-middle mx-[-0.1em] relative top-[0.05em]">
+                <FolderIcon />
+              </span>
+              {t.folderLine.after}
+            </span>
+            {t.linesAfter.map((line, i) => (
+              <span key={`${lang}-after-${i}`} className="block">
                 {line}
               </span>
             ))}
           </h1>
-
-          {/* 3D folder — centered over the text */}
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none"
-            aria-hidden="true"
-          >
-            <FolderIcon />
-          </div>
         </div>
 
         {/* Subtitle */}

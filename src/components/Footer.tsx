@@ -50,9 +50,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {/* Col 1 — Brand */}
             <div>
-              <p className="font-[family-name:var(--font-instrument-serif)] text-xl font-semibold text-foreground">
-                Puente Tech
-              </p>
+              <img src="/jsm-logo.svg" alt="JSM Consulting" className="h-10 w-auto" />
               <p className="mt-3 text-sm leading-relaxed text-gray-medium">
                 Conectando talento tech mexicano con oportunidades en Estados
                 Unidos.
@@ -123,7 +121,7 @@ export default function Footer() {
           {/* Bottom bar */}
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-gray-border pt-8 sm:flex-row">
             <p className="text-xs text-gray-medium">
-              &copy; 2026 Puente Tech. Todos los derechos reservados.
+              &copy; 2026 JSM Consulting. Todos los derechos reservados.
             </p>
 
             {/* Social links placeholder */}

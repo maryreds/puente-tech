@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Empleos", href: "#empleos" },
@@ -11,6 +12,14 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [videoEnded, setVideoEnded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.play().catch(() => setVideoEnded(true));
+  }, []);
 
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -28,12 +37,30 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white border-b border-gray-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="flex items-baseline gap-0.5 shrink-0">
-            <span className="font-[family-name:var(--font-instrument-serif)] text-2xl text-foreground">
-              Puente
-            </span>
-            <span className="text-2xl font-bold text-foreground">Tech</span>
+          {/* JSM Logo with globe intro video */}
+          <a href="/" className="relative flex items-center shrink-0 h-11">
+            {/* Globe video — plays once, then fades out */}
+            <video
+              ref={videoRef}
+              muted
+              playsInline
+              preload="auto"
+              src="/globe-intro.mp4"
+              onEnded={() => setVideoEnded(true)}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full object-cover transition-opacity duration-700 ${
+                videoEnded ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}
+            />
+            <Image
+              src="/jsm-logo.svg"
+              alt="JSM Consulting"
+              width={140}
+              height={48}
+              priority
+              className={`h-9 w-auto transition-opacity duration-700 ${
+                videoEnded ? "opacity-100" : "opacity-0"
+              }`}
+            />
           </a>
 
           {/* Center nav links — desktop */}
