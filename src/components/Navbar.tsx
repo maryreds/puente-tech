@@ -57,10 +57,10 @@ export default function Navbar() {
             <Image
               src="/talentos-icon.png"
               alt="TalentOS"
-              width={36}
-              height={40}
+              width={44}
+              height={48}
               priority
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
             <span
               className="text-[22px] tracking-tight text-foreground"
