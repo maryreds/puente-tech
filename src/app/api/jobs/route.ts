@@ -16,10 +16,15 @@ function fmt(d: Date): string {
 
 async function authenticate(): Promise<string> {
   const url = `${BASE_URL}/api/authenticate?clientid=${CLIENT_ID}&username=${encodeURIComponent(USERNAME)}&password=${encodeURIComponent(PASSWORD)}`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Auth failed: ${res.status}`);
-  const text = await res.text();
-  return text.replace(/^"|"$/g, "");
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const res = await fetch(url);
+    if (res.ok) {
+      const text = await res.text();
+      return text.replace(/^"|"$/g, "");
+    }
+    if (attempt < 2) await new Promise((r) => setTimeout(r, 1000));
+  }
+  throw new Error("Auth failed after 3 attempts");
 }
 
 type Rec = Record<string, unknown>;
