@@ -49,8 +49,9 @@ function formatDescriptionBlocks(html: string): { type: "heading" | "bullet" | "
   // Clean up HTML
   let text = html
     .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
     .replace(/\[Company\]/gi, "")
-    .replace(/<\/?(p|div|ul|ol|li|span|font|strong|b|i|em|u|a|h[1-6])[^>]*>/gi, "")
+    .replace(/<(?!br\s*\/?)(?:\/?\w+)[^>]*>/gi, "")
     .replace(/&nbsp;/gi, " ")
     .replace(/&amp;/gi, "&")
     .replace(/&lt;/gi, "<")
