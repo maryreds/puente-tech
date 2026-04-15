@@ -1,10 +1,10 @@
-# Puente Tech — Handoff Document
+# TalentOS — Handoff Document
 
 ## What This Is
-A Spanish-language landing page for Mexican software developers and tech professionals to find US tech jobs with visa sponsorship. Inspired by the "Jobr" design (clean, bold typography, green accents, serif/sans-serif mix).
+A bilingual (English/Spanish) landing page + job platform for Mexican and Latin American software developers to find US tech jobs with visa sponsorship. Branded under JSM Consulting. Inspired by the "Jobr" design (clean, bold typography, green accents, serif/sans-serif mix). Name is a play on words: Talentos (Spanish for "talents") + OS (operating system).
 
 ## Live Links
-- **Production**: https://puente-tech-92wl9od4w-maryreds-projects.vercel.app
+- **Production**: https://talentos-3d4ffeanu-maryreds-projects.vercel.app (Vercel project name: talentos)
 - **GitHub**: https://github.com/maryreds/puente-tech
 - **Local dev**: `cd ~/Projects/puente-tech && npm run dev` (port 3003)
 
