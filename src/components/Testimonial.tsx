@@ -4,7 +4,7 @@ export default function Testimonial() {
       <div className="mx-auto max-w-3xl px-6 text-center">
         {/* Quote */}
         <blockquote>
-          <p className="font-[family-name:var(--font-gloock)] italic text-2xl sm:text-3xl md:text-4xl leading-snug text-foreground">
+          <p className="font-[family-name:var(--font-instrument-serif)] italic text-2xl sm:text-3xl md:text-4xl leading-snug text-foreground">
             &ldquo;Lo que m&aacute;s me gusta es que el proceso fue completamente
             transparente. En menos de 6 semanas ya ten&iacute;a mi visa TN y
             estaba trabajando como Senior Developer en Austin. Mi sueldo se

@@ -31,7 +31,7 @@ export default function Features() {
       <div className="mx-auto max-w-4xl">
         {/* Section heading */}
         <div className="text-center mb-14">
-          <h2 className="font-[family-name:var(--font-gloock)] italic text-3xl sm:text-4xl md:text-5xl tracking-tight">
+          <h2 className="font-[family-name:var(--font-instrument-serif)] italic text-3xl sm:text-4xl md:text-5xl tracking-tight">
             Herramientas Que Trabajan Por Ti
           </h2>
           <p className="mt-4 text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
@@ -62,7 +62,7 @@ export default function Features() {
 
         {/* Referral banner */}
         <div className="mt-5 rounded-2xl bg-green-light p-8 md:p-10">
-          <h3 className="font-[family-name:var(--font-gloock)] italic text-2xl md:text-3xl tracking-tight">
+          <h3 className="font-[family-name:var(--font-instrument-serif)] italic text-2xl md:text-3xl tracking-tight">
             &iquest;Conoces a alguien que quiera trabajar en EE.UU.?
           </h3>
           <p className="mt-2 text-gray-600 text-lg leading-relaxed">

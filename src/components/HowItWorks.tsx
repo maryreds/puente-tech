@@ -3,7 +3,7 @@ export default function HowItWorks() {
     <section id="como-funciona" className="py-20 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl text-center font-[family-name:var(--font-gloock)] italic tracking-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl text-center font-[family-name:var(--font-instrument-serif)] italic tracking-tight">
           &iquest;C&oacute;mo Funciona?
         </h2>
 

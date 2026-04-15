@@ -11,7 +11,7 @@
   --color-gray-medium: #737373;
   --color-gray-border: #e5e5e5;
   --font-sans: var(--font-noto-sans);
-  --font-display: var(--font-gloock);
+  --font-display: var(--font-instrument-serif);
 }
 
 body {
@@ -22,4 +22,5 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-display), Georgia, serif;
+  -webkit-text-stroke: 0.4px currentColor;
 }

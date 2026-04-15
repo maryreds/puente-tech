@@ -55,7 +55,7 @@ export default function Hero() {
 
         {/* Big heading with floating 3D folder */}
         <div className="relative text-center">
-          <h1 className="font-[family-name:var(--font-gloock)] text-[clamp(2.8rem,7vw,6rem)] font-normal leading-[0.95] tracking-[-0.02em] text-foreground">
+          <h1 className="font-[family-name:var(--font-instrument-serif)] text-[clamp(2.8rem,7vw,6rem)] font-normal leading-[0.95] tracking-[-0.02em] text-foreground">
             {t.lines.map((line, i) => (
               <span key={`${lang}-${i}`} className="block">
                 {line}

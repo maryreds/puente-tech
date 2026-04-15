@@ -4,34 +4,34 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "¿Qué es Puente Tech y cómo funciona?",
+    question: "¿Qué es TalentOS y cómo funciona?",
     answer:
-      "Somos una plataforma que conecta desarrolladores y profesionales tech mexicanos con empleos en Estados Unidos. Nos encargamos de todo: desde encontrar el trabajo ideal hasta procesar tu visa y documentación.",
+      "TalentOS conecta talento tecnológico mexicano con oportunidades en Estados Unidos en un momento único.\n\nLa explosión de la inteligencia artificial ha disparado la demanda de talento tech a nivel global, y Estados Unidos no tiene suficiente oferta local para cubrirla. México se ha convertido en uno de los mercados más confiables y cercanos para encontrar ese talento.\n\nAhí es donde entramos nosotros.\n\nTe acompañamos de principio a fin: identificamos las mejores oportunidades para tu perfil y gestionamos todo el proceso, incluyendo visa y documentación.\n\nTú te enfocas en crecer. Nosotros en abrirte la puerta.",
   },
   {
     question: "¿Realmente no tiene costo para mí?",
     answer:
-      "Correcto. El empleador en Estados Unidos cubre todos los costos de reclutamiento, visa y reubicación. Tú no pagas nada.",
+      "Sí, es completamente gratis para ti.\n\nLas empresas en Estados Unidos cubren todos los costos: reclutamiento, visa y reubicación.\n\nTu única inversión es prepararte para dar el siguiente paso en tu carrera.",
   },
   {
     question: "¿Qué tipo de visa necesito?",
     answer:
-      "Depende de tu perfil. La visa TN (bajo el tratado USMCA/T-MEC) es la más rápida para profesionales mexicanos en tecnología — puede procesarse en 2-4 semanas. También manejamos visas H-1B para casos específicos.",
+      "Depende de tu perfil.\n\nLa visa TN (bajo el tratado USMCA/T-MEC) suele ser la opción más rápida para profesionales tech, con tiempos de 2 a 4 semanas.\n\nEn algunos casos, también trabajamos con visas H-1B.",
   },
   {
     question: "¿Necesito hablar inglés perfectamente?",
     answer:
-      "Un nivel intermedio-avanzado es suficiente para la mayoría de los puestos. Evaluamos tu nivel durante el proceso y te conectamos con oportunidades que se ajusten a tu perfil.",
+      "No necesitas tener un inglés perfecto.\n\nUn nivel intermedio-avanzado es suficiente para la mayoría de los roles. Evaluamos tu nivel y te conectamos con oportunidades donde puedas destacar.",
   },
   {
     question: "¿Puedo aplicar si vivo fuera de Ciudad de México?",
     answer:
-      "¡Por supuesto! Aceptamos candidatos de toda la República Mexicana. Muchas posiciones también ofrecen opciones de trabajo remoto o híbrido.",
+      "Sí.\n\nTrabajamos con talento en toda la República Mexicana.\n\nAdemás, muchas posiciones ofrecen modalidades remotas o híbridas.",
   },
   {
     question: "¿Cuánto tiempo tarda todo el proceso?",
     answer:
-      "Desde que aplicas hasta que empiezas a trabajar, el proceso típico toma de 4 a 8 semanas con visa TN. Con H-1B puede tomar más tiempo dependiendo del ciclo de aplicación.",
+      "En promedio, entre 4 y 8 semanas desde que aplicas hasta que comienzas a trabajar (con visa TN).\n\nLos tiempos pueden variar según la disponibilidad en consulados en México y el tipo de visa.\n\nPara H-1B, el proceso depende del ciclo anual de aplicación.",
   },
 ];
 
@@ -67,7 +67,7 @@ function FAQItem({
         }}
       >
         <div className="overflow-hidden">
-          <p className="pt-3 text-gray-medium leading-relaxed">{answer}</p>
+          <p className="pt-3 text-gray-medium leading-relaxed whitespace-pre-line">{answer}</p>
         </div>
       </div>
     </button>
@@ -78,7 +78,7 @@ export default function FAQ() {
   return (
     <section id="preguntas" className="px-6 py-20 md:py-28">
       <div className="mx-auto max-w-5xl">
-        <h2 className="font-[family-name:var(--font-gloock)] text-3xl md:text-4xl lg:text-5xl text-center mb-12 md:mb-16">
+        <h2 className="font-[family-name:var(--font-instrument-serif)] text-3xl md:text-4xl lg:text-5xl text-center mb-12 md:mb-16">
           ¿Tienes Preguntas? Tenemos Respuestas
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

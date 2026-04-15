@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans, Gloock } from "next/font/google";
+import { Noto_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const notoSans = Noto_Sans({
@@ -7,8 +7,8 @@ const notoSans = Noto_Sans({
   subsets: ["latin"],
 });
 
-const gloock = Gloock({
-  variable: "--font-gloock",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   weight: "400",
   subsets: ["latin"],
 });
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${notoSans.variable} ${gloock.variable} h-full antialiased`}
+      className={`${notoSans.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
