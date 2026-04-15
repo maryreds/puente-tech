@@ -39,6 +39,7 @@ export interface Job {
   openings?: number;
   remote_pct?: number;
   posted_at?: string;
+  description?: string;
 }
 
 function hashCode(s: string): number {

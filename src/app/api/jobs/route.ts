@@ -154,6 +154,7 @@ export async function GET() {
           openings: Number(j.OPENINGS || 1),
           remote_pct: Number(j.REMOTE_PERCENTAGE || 0),
           posted_at: String(j.ISSUEDATE || ""),
+          description: "",
         };
       });
 

@@ -180,6 +180,24 @@ export default function JobDetail({
               </div>
             )}
 
+          {/* Job description */}
+          {job.description && (
+            <div>
+              <p className="text-xs text-gray-400 uppercase tracking-wide mb-2">
+                Job Description
+              </p>
+              <div
+                className="text-sm text-gray-600 leading-relaxed prose prose-sm max-w-none"
+                dangerouslySetInnerHTML={{
+                  __html: job.description
+                    .replace(/\[Company\]/gi, "")
+                    .replace(/<br\s*\/?>\s*<br\s*\/?>/gi, "</p><p>")
+                    .replace(/<br\s*\/?>/gi, " "),
+                }}
+              />
+            </div>
+          )}
+
           {/* Posted date */}
           {job.posted_at && (
             <p className="text-xs text-gray-400">
