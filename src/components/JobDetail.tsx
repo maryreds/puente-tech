@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { Job } from "./JobCard";
 
 const palette = [
@@ -30,6 +31,18 @@ function formatSalary(min?: number, max?: number): string {
   if (min && max) return `${fmt(min)} – ${fmt(max)} / year`;
   if (max) return `Up to ${fmt(max)} / year`;
   return `From ${fmt(min!)} / year`;
+}
+
+function formatSalaryMXN(min?: number, max?: number, rate?: number): string | null {
+  const base = max || min;
+  if (!base || !rate) return null;
+  const fmt = (n: number) => {
+    const mxn = Math.round(n * rate);
+    return "$" + mxn.toLocaleString("en-US");
+  };
+  if (min && max) return `${fmt(min)} – ${fmt(max)} MXN / año`;
+  if (max) return `Hasta ${fmt(max)} MXN / año`;
+  return `Desde ${fmt(min!)} MXN / año`;
 }
 
 function formatDate(d?: string): string {
@@ -147,6 +160,16 @@ export default function JobDetail({
   onClose: () => void;
 }) {
   const color = palette[hashCode(job.id) % palette.length];
+  const [mxnRate, setMxnRate] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("https://open.er-api.com/v6/latest/USD")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.rates?.MXN) setMxnRate(data.rates.MXN);
+      })
+      .catch(() => setMxnRate(20.5)); // fallback
+  }, []);
 
   return (
     <div
@@ -210,6 +233,11 @@ export default function JobDetail({
               <p className={`text-sm font-semibold ${color.text}`}>
                 {formatSalary(job.salary_min, job.salary_max)}
               </p>
+              {mxnRate && formatSalaryMXN(job.salary_min, job.salary_max, mxnRate) && (
+                <p className="text-xs text-gray-400 mt-0.5">
+                  {formatSalaryMXN(job.salary_min, job.salary_max, mxnRate)}
+                </p>
+              )}
             </div>
             {job.start_date && (
               <div>
