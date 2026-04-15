@@ -15,9 +15,9 @@ const instrumentSerif = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Puente Tech — Trabajos Tech en EE.UU. para Desarrolladores Mexicanos",
+  title: "TalentOS — Tech Jobs in the U.S. for Latin American Developers",
   description:
-    "Encuentra trabajo tech en Estados Unidos con buen sueldo. Nosotros nos encargamos de tu visa y documentos. Todo legal, todo transparente.",
+    "Find tech jobs in the United States with competitive salaries. We handle your visa and documentation. 100% legal, 100% transparent.",
 };
 
 export default function RootLayout({

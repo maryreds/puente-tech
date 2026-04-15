@@ -4,18 +4,14 @@ import { useState } from "react";
 
 const content = {
   en: {
-    linesBefore: ["Tech Jobs", "That Match"],
-    folderLine: { before: "You,", after: "Not The" },
-    linesAfter: ["Other Way", "Around"],
+    lines: ["Tech Jobs", "That Match", "You, Not The", "Other Way", "Around"],
     subtitle:
       "Job matches, visa sponsorship, and a clear path to live and work legally in the U.S.",
     cta: "See Available Jobs",
     trust: "✓ 100% Legal · ✓ TN / H-1B Visa · ✓ Free for candidates",
   },
   es: {
-    linesBefore: ["Trabajos Tech", "Que Se"],
-    folderLine: { before: "Adaptan a", after: "Ti, No" },
-    linesAfter: ["al Revés"],
+    lines: ["Trabajos Tech", "Que Se Adaptan", "a Ti, No al", "Revés"],
     subtitle:
       "Ofertas personalizadas, visa patrocinada y un camino claro para vivir y trabajar legalmente en EE.UU.",
     cta: "Ver Empleos Disponibles",
@@ -31,7 +27,7 @@ function FolderIcon() {
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] md:w-[200px] md:h-[200px]"
+      className="w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px]"
       style={{
         filter:
           "drop-shadow(0 20px 40px rgba(59,143,227,0.3)) drop-shadow(0 8px 16px rgba(0,0,0,0.15))",
@@ -151,28 +147,23 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Big heading with inline 3D folder */}
-        <div className="text-center">
+        {/* Big heading with floating 3D folder */}
+        <div className="relative text-center">
           <h1 className="font-[family-name:var(--font-instrument-serif)] text-[clamp(3.5rem,10vw,9rem)] font-normal leading-[0.92] tracking-[-0.02em] text-foreground">
-            {t.linesBefore.map((line, i) => (
-              <span key={`${lang}-before-${i}`} className="block">
-                {line}
-              </span>
-            ))}
-            {/* Line with folder inline between words */}
-            <span className="block">
-              {t.folderLine.before}
-              <span className="inline-block align-middle mx-[-0.1em] relative top-[0.05em]">
-                <FolderIcon />
-              </span>
-              {t.folderLine.after}
-            </span>
-            {t.linesAfter.map((line, i) => (
-              <span key={`${lang}-after-${i}`} className="block">
+            {t.lines.map((line, i) => (
+              <span key={`${lang}-${i}`} className="block">
                 {line}
               </span>
             ))}
           </h1>
+
+          {/* 3D folder — floating in front of "Not", slightly smaller */}
+          <div
+            className="absolute top-[50%] left-[48%] -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none"
+            aria-hidden="true"
+          >
+            <FolderIcon />
+          </div>
         </div>
 
         {/* Subtitle */}
