@@ -5,10 +5,10 @@ export default function Testimonial() {
         {/* Quote */}
         <blockquote>
           <p className="font-[family-name:var(--font-instrument-serif)] italic text-2xl sm:text-3xl md:text-4xl leading-snug text-foreground">
-            &ldquo;Lo que m&aacute;s me gusta es que el proceso fue completamente
-            transparente. En menos de 6 semanas ya ten&iacute;a mi visa TN y
-            estaba trabajando como Senior Developer en Austin. Mi sueldo se
-            triplic&oacute;.&rdquo;
+            &ldquo;Lo que m&aacute;s me gust&oacute; fue que el proceso fue
+            completamente transparente y en menos de seis semanas ya
+            ten&iacute;a mi visa y estaba listo para trabajar como senior
+            developer en Austin. Mi sueldo se triplic&oacute;.&rdquo;
           </p>
         </blockquote>
 

@@ -87,13 +87,13 @@ export default function Navbar() {
           {/* Right actions — desktop */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="#iniciar-sesion"
+              href="/signin"
               className="text-sm text-gray-medium hover:text-foreground transition-colors"
             >
               {t.login}
             </a>
             <a
-              href="#aplicar"
+              href="/apply"
               className="bg-[#22c55e] hover:bg-[#16a34a] text-white text-sm font-medium rounded-full px-6 py-2.5 transition-colors"
             >
               {t.cta}
@@ -158,13 +158,13 @@ export default function Navbar() {
             ))}
             <hr className="border-gray-border" />
             <a
-              href="#iniciar-sesion"
+              href="/signin"
               className="text-sm text-gray-medium hover:text-foreground transition-colors py-1"
             >
               {t.login}
             </a>
             <a
-              href="#aplicar"
+              href="/apply"
               className="bg-[#22c55e] hover:bg-[#16a34a] text-white text-sm font-medium rounded-full px-6 py-2.5 text-center transition-colors"
             >
               {t.cta}

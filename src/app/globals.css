@@ -20,7 +20,7 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-h1, h2, h3 {
+h1, h2 {
   font-family: var(--font-display), Georgia, serif;
   -webkit-text-stroke: 0.4px currentColor;
 }
