@@ -16,7 +16,7 @@ export default function EmpleosPage() {
             <img
               src="/talentos-icon.png"
               alt="TalentOS"
-              className="h-12 w-auto"
+              className="h-[60px] w-auto"
             />
             <span
               className="text-[22px] tracking-tight text-foreground"
