@@ -55,7 +55,7 @@ export default function Navbar() {
           {/* TalentOS Logo */}
           <a href="/" className="flex items-center gap-2 shrink-0">
             <Image
-              src="/talentos-icon.svg"
+              src="/talentos-icon.png"
               alt="TalentOS"
               width={28}
               height={32}

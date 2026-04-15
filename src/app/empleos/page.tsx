@@ -14,7 +14,7 @@ export default function EmpleosPage() {
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2 shrink-0">
             <img
-              src="/talentos-icon.svg"
+              src="/talentos-icon.png"
               alt="TalentOS"
               className="h-8 w-auto"
             />
