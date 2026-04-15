@@ -12,12 +12,18 @@ export default function EmpleosPage() {
       {/* Header */}
       <header className="border-b border-gray-100">
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-          <a href="/" className="flex items-center shrink-0">
+          <a href="/" className="flex items-center gap-2 shrink-0">
             <img
-              src="/jsm-logo.svg"
-              alt="JSM Consulting"
-              className="h-9 w-auto"
+              src="/talentos-icon.svg"
+              alt="TalentOS"
+              className="h-8 w-auto"
             />
+            <span
+              className="text-[22px] tracking-tight text-foreground"
+              style={{ fontFamily: "'Georgia', 'Times New Roman', serif", fontWeight: 400 }}
+            >
+              TalentOS
+            </span>
           </a>
           <a
             href="/"
