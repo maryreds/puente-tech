@@ -174,7 +174,7 @@ export default function Hero() {
         {/* CTA */}
         <div className="mt-10 text-center">
           <a
-            href="#empleos"
+            href="/empleos"
             className="inline-block bg-[#22c55e] text-white rounded-full px-8 py-3.5 text-lg font-medium transition-transform duration-200 hover:scale-105 hover:shadow-lg"
           >
             {t.cta}
