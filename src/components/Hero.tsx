@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const content = {
   en: {
-    lines: ["Tech Jobs", "That Match", "You, Not The", "Other Way", "Around"],
+    lines: ["Tech Jobs That Match", "You, Not The Other", "Way Around"],
     subtitle:
       "Job matches, visa sponsorship, and a clear path to live and work legally in the U.S.",
     cta: "See Available Jobs",
@@ -27,7 +27,7 @@ function FolderIcon() {
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px]"
+      className="w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[64px] md:h-[64px]"
       style={{
         filter:
           "drop-shadow(0 20px 40px rgba(59,143,227,0.3)) drop-shadow(0 8px 16px rgba(0,0,0,0.15))",
@@ -149,7 +149,7 @@ export default function Hero() {
 
         {/* Big heading with floating 3D folder */}
         <div className="relative text-center">
-          <h1 className="font-[family-name:var(--font-instrument-serif)] text-[clamp(3.5rem,10vw,9rem)] font-normal leading-[0.92] tracking-[-0.02em] text-foreground">
+          <h1 className="font-[family-name:var(--font-gloock)] text-[clamp(3.5rem,10vw,9rem)] font-normal leading-[0.92] tracking-[-0.02em] text-foreground">
             {t.lines.map((line, i) => (
               <span key={`${lang}-${i}`} className="block">
                 {line}

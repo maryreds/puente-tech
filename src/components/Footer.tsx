@@ -6,7 +6,7 @@ export default function Footer() {
       {/* ── Big CTA Section ── */}
       <section className="bg-gradient-to-b from-green-gradient-start to-green-gradient-end py-20 md:py-28">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-[family-name:var(--font-instrument-serif)] italic text-3xl sm:text-4xl md:text-5xl leading-tight text-foreground">
+          <h2 className="font-[family-name:var(--font-gloock)] italic text-3xl sm:text-4xl md:text-5xl leading-tight text-foreground">
             Impulsa Tu Carrera Tech en Estados Unidos
           </h2>
 

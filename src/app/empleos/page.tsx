@@ -31,7 +31,7 @@ export default function EmpleosPage() {
       {/* Hero */}
       <section className="py-12 md:py-16 px-6">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="font-[family-name:var(--font-instrument-serif)] text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
+          <h1 className="font-[family-name:var(--font-gloock)] text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
             Open Roles
           </h1>
           <p className="mt-4 text-lg text-gray-400 max-w-xl mx-auto">

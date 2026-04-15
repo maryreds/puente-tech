@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { Noto_Sans, Gloock } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
   subsets: ["latin"],
 });
 
-const instrumentSerif = localFont({
-  src: "./fonts/InstrumentSerif-Regular.ttf",
-  variable: "--font-instrument-serif",
-  display: "swap",
+const gloock = Gloock({
+  variable: "--font-gloock",
+  weight: "400",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`${notoSans.variable} ${gloock.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

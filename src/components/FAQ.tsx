@@ -78,7 +78,7 @@ export default function FAQ() {
   return (
     <section id="preguntas" className="px-6 py-20 md:py-28">
       <div className="mx-auto max-w-5xl">
-        <h2 className="font-[family-name:var(--font-instrument-serif)] text-3xl md:text-4xl lg:text-5xl text-center mb-12 md:mb-16">
+        <h2 className="font-[family-name:var(--font-gloock)] text-3xl md:text-4xl lg:text-5xl text-center mb-12 md:mb-16">
           ¿Tienes Preguntas? Tenemos Respuestas
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
