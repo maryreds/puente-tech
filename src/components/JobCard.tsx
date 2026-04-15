@@ -88,7 +88,10 @@ export default function JobCard({ job, onClick }: { job: Job; onClick?: () => vo
       </div>
 
       {/* Job title */}
-      <h3 className="font-[family-name:var(--font-noto-sans)] font-semibold text-foreground text-base leading-tight mb-1">
+      <h3
+        style={{ fontFamily: "var(--font-noto-sans), system-ui, sans-serif", WebkitTextStroke: "0" }}
+        className="font-semibold text-foreground text-base leading-tight mb-1"
+      >
         {job.title}
       </h3>
 
