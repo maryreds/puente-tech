@@ -214,6 +214,13 @@ export default function JobDetail({
           </div>
         </div>
 
+        {/* CTA — pinned at top */}
+        <div className="px-8 pt-5">
+          <button className="w-full rounded-full bg-[#22c55e] text-white py-3.5 font-medium transition-transform duration-200 hover:scale-[1.02] hover:shadow-lg">
+            Apply for This Role
+          </button>
+        </div>
+
         {/* Body */}
         <div className="px-8 py-6 space-y-5">
           {/* Key details grid */}
@@ -331,10 +338,6 @@ export default function JobDetail({
             </p>
           </div>
 
-          {/* CTA */}
-          <button className="w-full rounded-full bg-[#22c55e] text-white py-3.5 font-medium transition-transform duration-200 hover:scale-[1.02] hover:shadow-lg">
-            Apply for This Role
-          </button>
         </div>
       </div>
     </div>
