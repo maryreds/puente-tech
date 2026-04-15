@@ -59,8 +59,8 @@ export default function Navbar() {
               className="h-8 w-auto"
             />
             <span
-              className="font-[family-name:var(--font-instrument-serif)] text-xl tracking-tight text-foreground"
-              style={{ WebkitTextStroke: "0px", fontWeight: 400 }}
+              className="text-[22px] tracking-tight text-foreground"
+              style={{ fontFamily: "'Georgia', 'Times New Roman', serif", fontWeight: 400, WebkitTextStroke: "0px" }}
             >
               TalentOS
             </span>
