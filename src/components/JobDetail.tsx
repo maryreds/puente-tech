@@ -190,6 +190,7 @@ export default function JobDetail({
                 className="text-sm text-gray-600 leading-relaxed prose prose-sm max-w-none"
                 dangerouslySetInnerHTML={{
                   __html: job.description
+                    .replace(/<script[\s\S]*?<\/script>/gi, "")
                     .replace(/\[Company\]/gi, "")
                     .replace(/<br\s*\/?>\s*<br\s*\/?>/gi, "</p><p>")
                     .replace(/<br\s*\/?>/gi, " "),
