@@ -12,7 +12,7 @@ export default function JobsGrid() {
   const [selected, setSelected] = useState<Job | null>(null);
 
   useEffect(() => {
-    fetch("/api/jobs")
+    fetch("https://jsm-recruiting-dashboard.vercel.app/api/jobs-proxy")
       .then((r) => r.json())
       .then((data) => {
         if (data.error) {
