@@ -45,6 +45,99 @@ function formatDate(d?: string): string {
   }
 }
 
+function formatDescriptionBlocks(html: string): { type: "heading" | "bullet" | "paragraph"; text: string }[] {
+  // Clean up HTML
+  let text = html
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/\[Company\]/gi, "")
+    .replace(/<\/?(p|div|ul|ol|li|span|font|strong|b|i|em|u|a|h[1-6])[^>]*>/gi, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&#\d+;/g, "")
+    .replace(/<br\s*\/?>/gi, "\n");
+
+  // Split into lines and clean
+  const lines = text
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l.length > 0);
+
+  const blocks: { type: "heading" | "bullet" | "paragraph"; text: string }[] = [];
+
+  for (const line of lines) {
+    // Detect headings: short lines ending with colon, ALL CAPS lines, or known heading patterns
+    const isHeading =
+      (line.endsWith(":") && line.length < 80) ||
+      (line === line.toUpperCase() && line.length < 80 && line.length > 2) ||
+      /^(description|responsibilities|requirements|qualifications|skills|experience|education|benefits|duties|about|overview|summary|role|position|what you|who you|nice to have|preferred|minimum|must have)/i.test(line);
+
+    // Detect bullet points
+    const isBullet = /^[\u2022\u2023\u25E6\u25AA\u25CF\u2013\u2014•●○◦·\-\*]\s/.test(line) ||
+      /^\d+[.)]\s/.test(line);
+
+    if (isHeading) {
+      blocks.push({ type: "heading", text: line.replace(/:$/, "") });
+    } else if (isBullet) {
+      blocks.push({ type: "bullet", text: line.replace(/^[\u2022\u2023\u25E6\u25AA\u25CF\u2013\u2014•●○◦·\-\*]\s*/, "").replace(/^\d+[.)]\s*/, "") });
+    } else {
+      blocks.push({ type: "paragraph", text: line });
+    }
+  }
+
+  return blocks;
+}
+
+function FormattedDescription({ html }: { html: string }) {
+  const blocks = formatDescriptionBlocks(html);
+
+  // Group consecutive bullets together
+  const elements: React.ReactNode[] = [];
+  let bulletBuffer: string[] = [];
+  let key = 0;
+
+  const flushBullets = () => {
+    if (bulletBuffer.length > 0) {
+      elements.push(
+        <ul key={key++} className="space-y-1.5 my-2">
+          {bulletBuffer.map((b, i) => (
+            <li key={i} className="flex gap-2 text-sm text-gray-600 leading-relaxed">
+              <span className="text-gray-300 mt-1.5 shrink-0 text-[6px]">●</span>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      );
+      bulletBuffer = [];
+    }
+  };
+
+  for (const block of blocks) {
+    if (block.type === "bullet") {
+      bulletBuffer.push(block.text);
+    } else {
+      flushBullets();
+      if (block.type === "heading") {
+        elements.push(
+          <p key={key++} className="text-xs font-semibold text-gray-500 uppercase tracking-wide mt-4 mb-1.5">
+            {block.text}
+          </p>
+        );
+      } else {
+        elements.push(
+          <p key={key++} className="text-sm text-gray-600 leading-relaxed my-1.5">
+            {block.text}
+          </p>
+        );
+      }
+    }
+  }
+  flushBullets();
+
+  return <div className="max-h-64 overflow-y-auto pr-1">{elements}</div>;
+}
+
 export default function JobDetail({
   job,
   onClose,
@@ -183,19 +276,10 @@ export default function JobDetail({
           {/* Job description */}
           {job.description && (
             <div>
-              <p className="text-xs text-gray-400 uppercase tracking-wide mb-2">
+              <p className="text-xs text-gray-400 uppercase tracking-wide mb-3">
                 Job Description
               </p>
-              <div
-                className="text-sm text-gray-600 leading-relaxed prose prose-sm max-w-none"
-                dangerouslySetInnerHTML={{
-                  __html: job.description
-                    .replace(/<script[\s\S]*?<\/script>/gi, "")
-                    .replace(/\[Company\]/gi, "")
-                    .replace(/<br\s*\/?>\s*<br\s*\/?>/gi, "</p><p>")
-                    .replace(/<br\s*\/?>/gi, " "),
-                }}
-              />
+              <FormattedDescription html={job.description} />
             </div>
           )}
 
