@@ -2,15 +2,34 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { useLang } from "./LangContext";
 
-const navLinks = [
-  { label: "Empleos", href: "#empleos" },
-  { label: "Como Funciona", href: "#como-funciona" },
-  { label: "Visa y Documentos", href: "#visa" },
-  { label: "Preguntas", href: "#preguntas" },
-];
+const navContent = {
+  en: {
+    links: [
+      { label: "Jobs", href: "#empleos" },
+      { label: "How It Works", href: "#como-funciona" },
+      { label: "Visa & Docs", href: "#visa" },
+      { label: "FAQ", href: "#preguntas" },
+    ],
+    login: "Sign In",
+    cta: "Apply Now",
+  },
+  es: {
+    links: [
+      { label: "Empleos", href: "#empleos" },
+      { label: "Cómo Funciona", href: "#como-funciona" },
+      { label: "Visa y Documentos", href: "#visa" },
+      { label: "Preguntas", href: "#preguntas" },
+    ],
+    login: "Iniciar Sesión",
+    cta: "Aplicar Ahora",
+  },
+};
 
 export default function Navbar() {
+  const { lang } = useLang();
+  const t = navContent[lang];
   const [mobileOpen, setMobileOpen] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -39,7 +58,6 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* JSM Logo with globe intro video */}
           <a href="/" className="relative flex items-center shrink-0 h-11">
-            {/* Globe video — plays once, then fades out */}
             <video
               ref={videoRef}
               muted
@@ -65,7 +83,7 @@ export default function Navbar() {
 
           {/* Center nav links — desktop */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {t.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -83,13 +101,13 @@ export default function Navbar() {
               href="#iniciar-sesion"
               className="text-sm text-gray-medium hover:text-foreground transition-colors"
             >
-              Iniciar Sesion
+              {t.login}
             </a>
             <a
               href="#aplicar"
               className="bg-[#22c55e] hover:bg-[#16a34a] text-white text-sm font-medium rounded-full px-6 py-2.5 transition-colors"
             >
-              Aplicar Ahora
+              {t.cta}
             </a>
           </div>
 
@@ -98,7 +116,7 @@ export default function Navbar() {
             type="button"
             className="md:hidden p-2 text-gray-medium hover:text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? (
               <svg
@@ -139,7 +157,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="md:hidden border-t border-gray-border bg-white px-4 pb-4 pt-2">
           <div className="flex flex-col gap-3">
-            {navLinks.map((link) => (
+            {t.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -154,13 +172,13 @@ export default function Navbar() {
               href="#iniciar-sesion"
               className="text-sm text-gray-medium hover:text-foreground transition-colors py-1"
             >
-              Iniciar Sesion
+              {t.login}
             </a>
             <a
               href="#aplicar"
               className="bg-[#22c55e] hover:bg-[#16a34a] text-white text-sm font-medium rounded-full px-6 py-2.5 text-center transition-colors"
             >
-              Aplicar Ahora
+              {t.cta}
             </a>
           </div>
         </div>
