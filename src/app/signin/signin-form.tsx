@@ -17,7 +17,7 @@ export function SignInForm() {
     const supabase = getSupabase();
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        router.replace("/empleos");
+        router.replace("/apply");
       } else {
         setChecking(false);
       }
@@ -36,7 +36,7 @@ export function SignInForm() {
       const { error } = await supabase.auth.signInWithOtp({
         email: email.trim(),
         options: {
-          emailRedirectTo: `${window.location.origin}/empleos`,
+          emailRedirectTo: `${window.location.origin}/apply`,
         },
       });
       if (error) throw error;
