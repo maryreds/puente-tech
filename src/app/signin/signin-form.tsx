@@ -1,14 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Mail, Loader2 } from "lucide-react";
 import { getSupabase } from "@/lib/supabase";
 
 export function SignInForm() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [checking, setChecking] = useState(true);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const supabase = getSupabase();
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        router.replace("/empleos");
+      } else {
+        setChecking(false);
+      }
+    });
+  }, [router]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -22,7 +36,7 @@ export function SignInForm() {
       const { error } = await supabase.auth.signInWithOtp({
         email: email.trim(),
         options: {
-          emailRedirectTo: `${window.location.origin}/`,
+          emailRedirectTo: `${window.location.origin}/empleos`,
         },
       });
       if (error) throw error;
@@ -34,6 +48,14 @@ export function SignInForm() {
     } finally {
       setLoading(false);
     }
+  }
+
+  if (checking) {
+    return (
+      <div className="bg-white border border-gray-border rounded-2xl p-10 text-center shadow-sm">
+        <Loader2 className="w-8 h-8 text-[#22c55e] mx-auto animate-spin" />
+      </div>
+    );
   }
 
   if (sent) {
