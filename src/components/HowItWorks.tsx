@@ -1,78 +1,121 @@
+"use client";
+
+import { useLang } from "./LangContext";
+
+const content = {
+  en: {
+    heading: "How It Works",
+    subtitle: "Three simple steps to start your tech career in the United States",
+    steps: [
+      {
+        label: "Step 1",
+        title: "Create Your Profile",
+        description:
+          "Sign up, upload your resume, and complete a brief questionnaire about your experience, skills, and English level.",
+      },
+      {
+        label: "Step 2",
+        badge: "Recommended",
+        title: "Receive Personalized Offers",
+        description:
+          "Our team reviews your profile, evaluates your visa eligibility, and connects you with the best opportunities that match your skills.",
+      },
+      {
+        label: "Step 3",
+        title: "Start Your New Life",
+        description:
+          "Accept the offer, we process your visa and documents, and support you throughout the entire relocation process.",
+      },
+    ],
+    footer: "No cost to the candidate — the employer covers all expenses",
+  },
+  es: {
+    heading: "\u00bfC\u00f3mo Funciona?",
+    subtitle: "Tres pasos simples para empezar tu carrera tech en Estados Unidos",
+    steps: [
+      {
+        label: "Paso 1",
+        title: "Crea Tu Perfil",
+        description:
+          "Reg\u00edstrate, sube tu CV y completa un breve cuestionario sobre tu experiencia, habilidades y nivel de ingl\u00e9s.",
+      },
+      {
+        label: "Paso 2",
+        badge: "Recomendado",
+        title: "Recibe Ofertas Personalizadas",
+        description:
+          "Nuestro equipo revisa tu perfil, eval\u00faa tu elegibilidad de visa y te conecta con las mejores oportunidades que se adaptan a ti.",
+      },
+      {
+        label: "Paso 3",
+        title: "Empieza Tu Nueva Vida",
+        description:
+          "Aceptas la oferta, nosotros procesamos tu visa y documentos, y te acompa\u00f1amos en todo el proceso de reubicaci\u00f3n.",
+      },
+    ],
+    footer: "Sin costo para el candidato \u2014 el empleador cubre todos los gastos",
+  },
+};
+
 export default function HowItWorks() {
+  const { lang } = useLang();
+  const t = content[lang];
+
   return (
     <section id="como-funciona" className="py-20 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        {/* Heading */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl text-center font-[family-name:var(--font-instrument-serif)] italic tracking-tight">
-          &iquest;C&oacute;mo Funciona?
+          {t.heading}
         </h2>
 
-        {/* Subtitle */}
         <p className="mt-4 text-center text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-          Tres pasos simples para empezar tu carrera tech en Estados Unidos
+          {t.subtitle}
         </p>
 
-        {/* Cards */}
         <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1 */}
-          <div className="rounded-2xl border border-gray-200 p-8 flex flex-col">
-            <span className="inline-block self-start rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
-              Paso 1
-            </span>
-            <span className="mt-4 text-6xl font-bold text-gray-200 leading-none">
-              01
-            </span>
-            <h3 className="mt-4 text-xl font-bold text-gray-900">
-              Crea Tu Perfil
-            </h3>
-            <p className="mt-3 text-gray-500 leading-relaxed">
-              Reg&iacute;strate, sube tu CV y completa un breve cuestionario
-              sobre tu experiencia, habilidades y nivel de ingl&eacute;s.
-            </p>
-          </div>
-
-          {/* Card 2 — Highlighted */}
-          <div className="rounded-2xl border-2 border-[#22c55e] bg-green-50/50 p-8 flex flex-col relative">
-            <div className="flex items-center gap-2">
-              <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
-                Paso 2
-              </span>
-              <span className="inline-block rounded-full bg-[#22c55e] px-3 py-1 text-xs font-semibold text-white">
-                &#9733; Recomendado
-              </span>
-            </div>
-            <span className="mt-4 text-6xl font-bold text-green-200 leading-none">
-              02
-            </span>
-            <h3 className="mt-4 text-xl font-bold text-gray-900">
-              Recibe Ofertas Personalizadas
-            </h3>
-            <p className="mt-3 text-gray-600 leading-relaxed">
-              Nuestro equipo revisa tu perfil, eval&uacute;a tu elegibilidad de
-              visa y te conecta con las mejores oportunidades que se adaptan a
-              ti.
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="rounded-2xl border border-gray-200 p-8 flex flex-col">
-            <span className="inline-block self-start rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
-              Paso 3
-            </span>
-            <span className="mt-4 text-6xl font-bold text-gray-200 leading-none">
-              03
-            </span>
-            <h3 className="mt-4 text-xl font-bold text-gray-900">
-              Empieza Tu Nueva Vida
-            </h3>
-            <p className="mt-3 text-gray-500 leading-relaxed">
-              Aceptas la oferta, nosotros procesamos tu visa y documentos, y te
-              acompa&ntilde;amos en todo el proceso de reubicaci&oacute;n.
-            </p>
-          </div>
+          {t.steps.map((step, i) => {
+            const isHighlighted = i === 1;
+            return (
+              <div
+                key={i}
+                className={`rounded-2xl p-8 flex flex-col ${
+                  isHighlighted
+                    ? "border-2 border-[#22c55e] bg-green-50/50"
+                    : "border border-gray-200"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+                    {step.label}
+                  </span>
+                  {step.badge && (
+                    <span className="inline-block rounded-full bg-[#22c55e] px-3 py-1 text-xs font-semibold text-white">
+                      &#9733; {step.badge}
+                    </span>
+                  )}
+                </div>
+                <span
+                  className={`mt-4 text-6xl font-bold leading-none ${
+                    isHighlighted ? "text-green-200" : "text-gray-200"
+                  }`}
+                >
+                  0{i + 1}
+                </span>
+                <h3 className="mt-4 text-xl font-bold text-gray-900">
+                  {step.title}
+                </h3>
+                <p
+                  className={`mt-3 leading-relaxed ${
+                    isHighlighted ? "text-gray-600" : "text-gray-500"
+                  }`}
+                >
+                  {step.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Footer note */}
         <p className="mt-10 text-center text-gray-500 flex items-center justify-center gap-2">
           <svg
             className="h-5 w-5 text-[#22c55e]"
@@ -86,8 +129,7 @@ export default function HowItWorks() {
               clipRule="evenodd"
             />
           </svg>
-          Sin costo para el candidato &mdash; el empleador cubre todos los
-          gastos
+          {t.footer}
         </p>
       </div>
     </section>
